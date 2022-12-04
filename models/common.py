@@ -68,7 +68,7 @@ class eSE(nn.Module):
             nn.Sigmoid()
         )
     def forward(self, x):
-        return self.ese(x) * x
+        return self.ese(x) * x    
 class ResBlock(nn.Module):
     def __init__(self, c1, c2, n=1, shortcut=True, g=1, e= 0.25) -> None:
         super().__init__()
@@ -922,3 +922,33 @@ class Classify(nn.Module):
         if isinstance(x, list):
             x = torch.cat(x, 1)
         return self.linear(self.drop(self.pool(self.conv(x)).flatten(1)))
+
+
+##### yolor #####
+
+class ImplicitA(nn.Module):
+    def __init__(self, channel, mean=0., std=.02):
+        super(ImplicitA, self).__init__()
+        self.channel = channel
+        self.mean = mean
+        self.std = std
+        self.implicit = nn.Parameter(torch.zeros(1, channel, 1, 1))
+        nn.init.normal_(self.implicit, mean=self.mean, std=self.std)
+
+    def forward(self, x):
+        return self.implicit + x
+    
+
+class ImplicitM(nn.Module):
+    def __init__(self, channel, mean=1., std=.02):
+        super(ImplicitM, self).__init__()
+        self.channel = channel
+        self.mean = mean
+        self.std = std
+        self.implicit = nn.Parameter(torch.ones(1, channel, 1, 1))
+        nn.init.normal_(self.implicit, mean=self.mean, std=self.std)
+
+    def forward(self, x):
+        return self.implicit * x
+    
+##### end of yolor #####

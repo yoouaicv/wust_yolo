@@ -92,4 +92,4 @@ Yolov5.5-s
 * Yolov6  [https://github.com/meituan/YOLOv6](https://github.com/meituan/YOLOv6)
 * Yolov7  [https://github.com/WongKinYiu/yolov7](https://github.com/WongKinYiu/yolov7)
 * PPYoloE  [https://github.com/PaddlePaddle/PaddleYOLO](https://github.com/PaddlePaddle/PaddleYOLO)
-* PPYoloE-pytorch  [https://github.com/Nioolek/PPYOLOE_pytorch](https://github.com/Nioolek/PPYOLOE_pytorch)``
+* PPYoloE-pytorch  [https://github.com/Nioolek/PPYOLOE_pytorch](https://github.com/Nioolek/PPYOLOE_pytorch)

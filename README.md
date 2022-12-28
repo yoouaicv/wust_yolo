@@ -16,15 +16,16 @@
 |   Model    | #Param. | FLOPs | Size | mAP<sup>val<br>0.5:0.95 | mAP<sup>val<br>0.5 |
 | :--------: | :-----: | :---: | :--: | :-------: | :-------: |
 | YOLOv5.5-N |  1.8M   |  4.5G | 640  |   29.9    |   47.2    |
+|    + IDetect + smiOTA + eSE  | 1.9M | 4.6G | 640 | **32.0%**  | 49.2 |
 | YOLOv5.5-S |  7.1M   | 16.4G | 640  |   39.2    |   58.1    |
-| YOLOv5.5-M |  21.4M  | 49.9G | 640  |           |           |
+| YOLOv5.5-M |  21.4M  | 49.9G | 640  |   46.0    |       |
 | YOLOv5.5-L |  47.8M  |  113G | 640  |           |           |
 | YOLOv5.5-X |  90M    |215.4G | 640  |           |           |
 
 <br>
 <details>
 <summary>实验结果展示</summary>
-
+Yolov5.5n
 ```python
 Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.299
  Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.472
@@ -39,7 +40,22 @@ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.299
  Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.561
  Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.685
 ```
-Yolov5.5-s
+Yolov5.5n + IDetect + smiOTA
+```python
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.320
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.492
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.342
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.145
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.353
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.450
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.282
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.476
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.530
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.307
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.583
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.704
+```
+Yolov5.5s
 ```python
  Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.392
  Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.581
@@ -53,6 +69,21 @@ Yolov5.5-s
  Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.381
  Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.635
  Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.755
+```
+Yolov5.5m
+```python
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.451
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.637
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.489
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.263
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.501
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.601
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.354
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.577
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.629
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.431
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.684
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.794
 ```
 
 </details>
@@ -74,7 +105,7 @@ Yolov5.5-s
 |     YOLOX-M      |  25.3M  | 73.8G  | 640  |   46.9%   |           |
 |    PPYOLOE-M     |  23.4M  | 49.9G  | 640  |   48.6%   |           |
 |      YOLOv7      |  36.9M  | 104.7G | 640  |   51.2%   |           |
-|    YOLOv5.5-M    |  21.4M  | 49.9G  | 640  |           |           |
+|    YOLOv5.5-M    |  21.4M  | 49.9G  | 640  |   **46.0%**        |           |
 |     YOLOv5-L     |  46.5M  | 109.1G | 640  |   49.0%   |           |
 |     YOLOX-L      |  54.2M  | 155.6G | 640  |   49.7%   |           |
 |    PPYOLOE-L     |  52.2M  | 110.1G | 640  |   50.9%   |           |

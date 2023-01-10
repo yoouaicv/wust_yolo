@@ -129,3 +129,16 @@ dmypy.json
 .pyre/
 pth.py
 yolors.pt
+weights/wust_yolo-n.pt
+runs/val/exp4/confusion_matrix.png
+runs/val/exp4/F1_curve.png
+runs/val/exp4/P_curve.png
+runs/val/exp4/PR_curve.png
+runs/val/exp4/R_curve.png
+runs/val/exp4/val_batch0_labels.jpg
+runs/val/exp4/val_batch0_pred.jpg
+runs/val/exp4/val_batch1_labels.jpg
+runs/val/exp4/val_batch1_pred.jpg
+runs/val/exp4/val_batch2_labels.jpg
+runs/val/exp4/val_batch2_pred.jpg
+runs/val/exp4/wust_yolo-n_predictions.json

@@ -1,4 +1,4 @@
-# Yolov5.5
+# WUST_YOLO
 `自封的，没有创新，啊哈哈哈哈`
 
 <!--自封-->
@@ -8,86 +8,21 @@
 受Yolov7的设计启发，将Yolov5的C3重新设计；在原ResBlock的{ 3×3conv 1×1conv }结构替换为{ 3×3conv_(c//2) 3×3conv(c) }结构，再将n个ResBlock的结果concat一起，与原C3结构连接。
 下采样采取2×2avgpool与3×3conv(c * 2)组成。伴随着depth的扩大参数量与原Yolov5相比，略有增加。
 <br>
-`受设备限制，暂时测试Yolov5.5-s的造作结果，后续有更新再上结果。`
+`受设备限制，暂时测试WUST_YOLO-s的造作结果，后续有更新再上结果。`
 <br>
 
 ### 实验结果
 
 |   Model    | #Param. | FLOPs | Size | mAP<sup>val<br>0.5:0.95 | mAP<sup>val<br>0.5 |
 | :--------: | :-----: | :---: | :--: | :-------: | :-------: |
-| YOLOv5.5-N |  1.8M   |  4.5G | 640  |   29.9    |   47.2    |
-|    + IDetect + smiOTA + eSE  | 1.9M | 4.6G | 640 | **32.0%**  | 49.2 |
-| YOLOv5.5-S |  7.1M   | 16.4G | 640  |   39.2    |   58.1    |
-| YOLOv5.5-M |  21.4M  | 49.9G | 640  |   46.0    |       |
-| YOLOv5.5-L |  47.8M  |  113G | 640  |           |           |
-| YOLOv5.5-X |  90M    |215.4G | 640  |           |           |
+| WUST_YOLO-N |  1.5M   |  4.1G | 640  |   31.2    |   48.5    |
+| WUST_YOLO-S |  5.8M   | 14.8G | 640  |       |       |
+| WUST_YOLO-M |  18.6M  | 46.5G | 640  |       |       |
+| WUST_YOLO-L |  42.9M  |  107G | 640  |       |           |
+| WUST_YOLO-X |  82.5M    |205.8G | 640  |           |           |
 
 <br>
-<details>
-<summary>实验结果展示</summary>
 
-Yolov5.5n
-```python
-Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.299
- Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.472
- Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.314
- Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.141
- Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.335
- Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.415
- Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.264
- Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.448
- Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.505
- Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.283
- Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.561
- Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.685
-```
-Yolov5.5n + IDetect + smiOTA
-```python
- Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.320
- Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.492
- Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.342
- Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.145
- Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.353
- Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.450
- Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.282
- Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.476
- Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.530
- Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.307
- Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.583
- Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.704
-```
-Yolov5.5s
-```python
- Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.392
- Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.581
- Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.422
- Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.209
- Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.441
- Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.534
- Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.320
- Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.528
- Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.582
- Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.381
- Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.635
- Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.755
-```
-Yolov5.5m
-```python
- Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.451
- Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.637
- Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.489
- Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.263
- Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.501
- Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.601
- Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.354
- Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.577
- Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.629
- Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.431
- Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.684
- Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.794
-```
-
-</details>
 <br>
 
 ### 对比实验
@@ -96,25 +31,25 @@ Yolov5.5m
 |      Model       | #Param. | FLOPs  | Size | mAP<sup>val<br>0.5:0.95 | mAP<sup>val<br>0.5 |
 | :--------------: | :-----: | :----: | :--: | :-------: | :-------: |
 |     YOLOv5-N     |  1.9M   |  4.5G  | 640  |   28.0%   |           |
-|    YOLOv5.5-N    |  1.8M   |  4.5G  | 640  |   **29.9%**   |           |
+|    WUST_YOLO-N    |  1.5M   |  4.1G  | 640  |   **31.2%**   |           |
 |     YOLOv5-S     |  7.2M   | 16.5G  | 640  |   37.4%   |           |
 |     YOLOX-S      |  9.0M   | 26.8G  | 640  |   40.5%   |           |
 |    PPYOLOE-S     |  7.9M   | 17.4G  | 640  |   42.7%   |           |
 | YOLOV7-tiny-SiLU |  6.2M   | 13.8G  | 640  |   38.7%   |           |
-|    YOLOv5.5-S    |  7.0M   | 16.4G  | 640  |   **39.2%**   |           |
+|    WUST_YOLO-S    |  5.8M   | 14.8G  | 640  |      |           |
 |     YOLOv5-M     |  21.2M  | 49.0G  | 640  |   45.4%   |           |
 |     YOLOX-M      |  25.3M  | 73.8G  | 640  |   46.9%   |           |
 |    PPYOLOE-M     |  23.4M  | 49.9G  | 640  |   48.6%   |           |
 |      YOLOv7      |  36.9M  | 104.7G | 640  |   51.2%   |           |
-|    YOLOv5.5-M    |  21.4M  | 49.9G  | 640  |   **46.0%**        |           |
+|    WUST_YOLO-M    |  18.6M  | 46.5G  | 640  |           |           |
 |     YOLOv5-L     |  46.5M  | 109.1G | 640  |   49.0%   |           |
 |     YOLOX-L      |  54.2M  | 155.6G | 640  |   49.7%   |           |
 |    PPYOLOE-L     |  52.2M  | 110.1G | 640  |   50.9%   |           |
-|    YOLOv5.5-L    |  47.8M  |  113G  | 640  |           |           |
+|    WUST_YOLO-L    |  42.9M  |  107G  | 640  |           |           |
 |     YOLOv5-X     |  86.7M  | 205.7G | 640  |   50.7%   |           |
 |     YOLOX-X      |  99.1M  | 281.9G | 640  |   51.1%   |           |
 |    PPYOLOE-X     |  98.4M  | 206.6G | 640  |   51.9%   |           |
-|    YOLOv5.5-X    |  90M    | 215.4G | 640  |           |           |
+|    WUST_YOLO-X    |  82.5M    |205.8G | 640  |      |           |
 
 <br>
 
@@ -125,3 +60,10 @@ Yolov5.5m
 * Yolov7  [https://github.com/WongKinYiu/yolov7](https://github.com/WongKinYiu/yolov7)
 * PPYoloE  [https://github.com/PaddlePaddle/PaddleYOLO](https://github.com/PaddlePaddle/PaddleYOLO)
 * PPYoloE-pytorch  [https://github.com/Nioolek/PPYOLOE_pytorch](https://github.com/Nioolek/PPYOLOE_pytorch)
+* DAMO_YOLO  [https://github.com/tinyvision/damo-yolo](https://github.com/tinyvision/damo-yolo)
+* YOLOX  [https://github.com/Megvii-BaseDetection/YOLOX](https://github.com/Megvii-BaseDetection/YOLOX)
+* YOLOR  [https://github.com/WongKinYiu/yolor](https://github.com/WongKinYiu/yolor)
+
+<br>
+<br>
+期待YOLOv8
